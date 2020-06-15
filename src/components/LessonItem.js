@@ -1,8 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 
-export default function LessonItem({lesson}) {
+function LessonItem({lesson}) {
   return (
       <li>{lesson.title}</li>
   )
 }
+
+LessonItem.propTypes = {
+  lesson: PropTypes.object.isRequired
+}
+
+export default LessonItem

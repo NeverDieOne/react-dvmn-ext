@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import LessonItem from "./LessonItem";
 
 const styles = {
@@ -10,7 +11,7 @@ const styles = {
 }
 
 
-export default function LessonsList(props) {
+function LessonsList(props) {
   return (
       <ul style={styles.ul}>
         { props.lessons.map(lesson => {
@@ -19,3 +20,11 @@ export default function LessonsList(props) {
       </ul>
   )
 }
+
+
+LessonsList.propTypes = {
+  lessons: PropTypes.arrayOf(PropTypes.object).isRequired
+}
+
+
+export default LessonsList

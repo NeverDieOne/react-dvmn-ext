@@ -14,6 +14,7 @@ function App() {
       <h1>Devman Lessons</h1>
       <hr/>
       <LessonsList lessons={lessons} />
+      <hr/>
     </div>
   );
 }

@@ -1,37 +1,32 @@
 import React from 'react';
-import LessonsList from "./components/LessonsList";
-import LessonDescription from "./components/LessonDescription";
-import Context from "./context";
-import Loader from "./components/Loader";
+import Home from "./views/Home"
+import Settings from "./views/Settings"
 
-function App() {
-  const [lessons, setLessons] = React.useState()
-  const [currentLesson, setCurrentLesson] = React.useState()
-  const [loading, setLoading] = React.useState(true)
+import {
+  Route,
+  Switch,
+  withRouter,
+    Redirect
+} from "react-router-dom"
 
-  React.useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/lessons")
-        .then(response => response.json())
-        .then(lessons => {
-          setLessons(lessons)
-          setLoading(false)
-        })
-        .catch(err => console.log(err))
-  }, [])
+function App(props) {
+  const {history} = props
 
   return (
-      <Context.Provider value={{setCurrentLesson}}>
         <div className="wrapper container">
           <h1>Devman Lessons
             <img width="30" src="https://dvmn.org/assets/img/logo_small.75f0bf1bbe74.svg" alt="" className="ml-1"/>
           </h1>
           <hr/>
-          {loading ? <Loader/> : <LessonsList lessons={lessons}/>}
-          <hr/>
-          {currentLesson ? <LessonDescription lesson={currentLesson}/> : <p>Не выбран ни один урок</p>}
+
+          <Switch>
+            <Route history={history} path='/home' component={Home}/>
+            <Route history={history} path='/settings' component={Settings}/>
+            <Redirect from='/' to='/home'/>
+          </Switch>
         </div>
-      </Context.Provider>
+
   );
 }
 
-export default App;
+export default withRouter(App);

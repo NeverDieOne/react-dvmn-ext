@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import LessonItem from "./LessonItem";
 
 const styles = {
@@ -11,20 +10,16 @@ const styles = {
 }
 
 
-function LessonsList(props) {
+function LessonsList({lessons}) {
   return (
       <ul style={styles.ul}>
-        { props.lessons.map(lesson => {
-          return <LessonItem lesson={lesson} key={lesson.name}/>
-        }) }
+        {lessons.lessons.map(lesson => {
+          return <LessonItem lesson={lesson} key={lesson[0]}/>
+        })}
       </ul>
   )
 }
 
-
-LessonsList.propTypes = {
-  lessons: PropTypes.arrayOf(PropTypes.object).isRequired
-}
 
 
 export default LessonsList

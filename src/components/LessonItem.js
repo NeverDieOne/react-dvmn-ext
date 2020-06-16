@@ -1,15 +1,22 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Context from "../context";
 
 
 function LessonItem({lesson}) {
+  const {setCurrentLesson} = React.useContext(Context)
+
+  function loadLesson(name) {
+    fetch(`http://127.0.0.1:5000/api/lessons/${name}`)
+        .then(response => response.json())
+        .then(lesson => {
+          setCurrentLesson(lesson)
+        })
+  }
+
   return (
-      <li>{lesson.title}</li>
+      <li onClick={() => loadLesson(lesson[0])}>{lesson[1]}</li>
   )
 }
 
-LessonItem.propTypes = {
-  lesson: PropTypes.object.isRequired
-}
 
 export default LessonItem

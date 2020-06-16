@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from "./views/Home"
 import Settings from "./views/Settings"
+import Context from "./context";
 
 import {
   Route,
@@ -11,8 +12,10 @@ import {
 
 function App(props) {
   const {history} = props
+  const [token, setToken] = React.useState('Empty token')
 
   return (
+      <Context.Provider value={{setToken, token}}>
         <div className="wrapper container">
           <h1>Devman Lessons
             <img width="30" src="https://dvmn.org/assets/img/logo_small.75f0bf1bbe74.svg" alt="" className="ml-1"/>
@@ -25,6 +28,7 @@ function App(props) {
             <Redirect from='/' to='/home'/>
           </Switch>
         </div>
+      </Context.Provider>
 
   );
 }

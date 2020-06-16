@@ -13,12 +13,14 @@ function App() {
         .then(lessons => {
           setLessons(lessons)
         })
-  })
+  }, [])
 
   return (
       <Context.Provider value={{setCurrentLesson}}>
-        <div className="wrapper">
-          <h1>Devman Lessons</h1>
+        <div className="wrapper container">
+          <h1>Devman Lessons
+            <img width="30" src="https://dvmn.org/assets/img/logo_small.75f0bf1bbe74.svg" alt="" className="ml-1"/>
+          </h1>
           <hr/>
           {lessons ? <LessonsList lessons={lessons}/> : <p>У вас нет доступных уроков</p>}
           <hr/>

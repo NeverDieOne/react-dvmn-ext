@@ -14,7 +14,7 @@ function LessonItem({lesson}) {
   }
 
   return (
-      <li onClick={() => loadLesson(lesson[0])}>{lesson[1]}</li>
+      <button type="button" className="btn btn-secondary btn-sm mr-1" onClick={() => loadLesson(lesson[0])}>{lesson[1]}</button>
   )
 }
 

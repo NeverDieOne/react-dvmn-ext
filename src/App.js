@@ -12,7 +12,7 @@ import {
 
 function App(props) {
   const {history} = props
-  const [token, setToken] = React.useState('Empty token')
+  const [token, setToken] = React.useState('hello')
 
   return (
       <Context.Provider value={{setToken, token}}>

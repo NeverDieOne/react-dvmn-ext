@@ -9,6 +9,7 @@ function Home() {
   const [lessons, setLessons] = React.useState()
   const [currentLesson, setCurrentLesson] = React.useState()
   const [loading, setLoading] = React.useState(true)
+  const {token} = React.useContext(Context)
 
   React.useEffect(() => {
     fetch("http://127.0.0.1:5000/api/lessons")
@@ -25,9 +26,9 @@ function Home() {
         <div>
           <Link to="/settings">Settings</Link>
           <hr/>
-          {loading ? <Loader/> : <LessonsList lessons={lessons}/>}
+          {loading ? <Loader/> : <LessonsList lessons={lessons} token={token}/>}
           <hr/>
-          {currentLesson ? <LessonDescription lesson={currentLesson}/> : <p>Не выбран ни один урок</p>}
+          {currentLesson && <LessonDescription lesson={currentLesson}/>}
         </div>
       </Context.Provider>
   );

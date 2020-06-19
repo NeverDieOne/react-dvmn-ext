@@ -28,34 +28,31 @@ function LessonDescription({lesson}) {
 
   return (
       <div>
-        <h5>
-          Текущий урок - {lesson.name}
-        </h5>
-        <hr/>
-        <p>Вы на {currentStepNumber} шаге из {lesson.steps.length}</p>
-        <hr/>
-
-        <StepItem step={currentStep}/>
 
         <div className="row">
-          <div className="col-3"/>
           <div className="col">
-            <button className="btn btn-secondary btn-sm btn-block" onClick={prev}
-                    disabled={currentStepNumber === 1}
-            >Prev
+            <button className="btn btn-light btn-sm btn-block" onClick={prev}
+                    disabled={currentStepNumber === 1}>
+              <i className="fas fa-arrow-circle-left fa-2x"/>
             </button>
           </div>
 
           <div className="col">
-            <button className="btn btn-secondary btn-sm btn-block" onClick={next}
-                    disabled={currentStepNumber === lesson.steps.length}
-            >Next
-            </button>
+            <h5 className="card-title" style={{textSize: "10px"}}>{currentStep.title}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">Шаг {currentStepNumber}/{lesson.steps.length}</h6>
           </div>
-          <div className="col-3"/>
+
+          <div className="col">
+            <button className="btn btn-light btn-sm btn-block" onClick={next}
+                    disabled={currentStepNumber === lesson.steps.length}>
+              <i className="fas fa-arrow-circle-right fa-2x"/>
+            </button>
+
+          </div>
         </div>
+        <hr style={{marginTop: "0px"}}/>
 
-
+        <StepItem step={currentStep}/>
       </div>
   )
 }

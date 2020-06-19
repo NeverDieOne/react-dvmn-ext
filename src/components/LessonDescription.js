@@ -33,7 +33,7 @@ function LessonDescription({lesson}) {
           <div className="col">
             <button className="btn btn-light btn-sm btn-block" onClick={prev}
                     disabled={currentStepNumber === 1}>
-              <i className="fas fa-arrow-circle-left fa-2x"/>
+              <i className="fa fa-arrow-circle-left fa-2x" aria-hidden="true"/>
             </button>
           </div>
 
@@ -42,12 +42,11 @@ function LessonDescription({lesson}) {
             <h6 className="card-subtitle mb-2 text-muted">Шаг {currentStepNumber}/{lesson.steps.length}</h6>
           </div>
 
-          <div className="col">
+          <div className="col ">
             <button className="btn btn-light btn-sm btn-block" onClick={next}
                     disabled={currentStepNumber === lesson.steps.length}>
-              <i className="fas fa-arrow-circle-right fa-2x"/>
+              <i className="fa fa-arrow-circle-right fa-2x" aria-hidden="true"/>
             </button>
-
           </div>
         </div>
         <hr style={{marginTop: "0px"}}/>

@@ -16,7 +16,7 @@ function App(props) {
 
   return (
       <Context.Provider value={{setToken, token}}>
-        <div className="wrapper container">
+        <div className="wrapper container mb-3">
           <h1>Devman Lessons
             <img width="30" src="https://dvmn.org/assets/img/logo_small.75f0bf1bbe74.svg" alt="" className="ml-1"/>
           </h1>

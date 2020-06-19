@@ -44,27 +44,3 @@ code {
     transform: rotate(360deg);
   }
 }
-
-.stepTitle {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 500;
-}
-
-.stepSubtitle {
-  font-size: 14px;
-  line-height: 16px;
-  margin-top: 10px;
-}
-
-.right {
-  background: url("arrow.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) scaleX(-1);
-  cursor: pointer;
-  right: 36px;
-}

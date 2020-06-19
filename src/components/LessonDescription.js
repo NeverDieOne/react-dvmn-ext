@@ -37,8 +37,8 @@ function LessonDescription({lesson}) {
             </button>
           </div>
 
-          <div className="col">
-            <h5 className="card-title" style={{textSize: "10px"}}>{currentStep.title}</h5>
+          <div className="col-8">
+            <h6 className="card-title" style={{textSize: "10px"}}>{currentStep.title}</h6>
             <h6 className="card-subtitle mb-2 text-muted">Шаг {currentStepNumber}/{lesson.steps.length}</h6>
           </div>
 

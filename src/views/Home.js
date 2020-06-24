@@ -34,10 +34,10 @@ function Home() {
           <hr/>
           {loading ? <Loader/> : <LessonsList lessons={lessons} token={token}/>}
           <hr/>
-          {currentLesson && <LessonDescription lesson={currentLesson}/>}
+          {currentLesson && token && <LessonDescription lesson={currentLesson}/>}
           {!token && <p>
             Добро пожаловать в расширение для уроков сайта Dvmn.
-            Если Вы здесь первый раз и у Вас нет токена, зайдите на <a href="https://dvmn.org/modules/">сайт</a>.
+            Если Вы здесь первый раз и у Вас нет токена, зайдите на <a href="https://dvmn.org/modules/" target="_blank">сайт</a>.
             <br/>
             Если Вы найдете ошибку - отпишитесь в Telegram: @neverdieone
           </p>}

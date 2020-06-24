@@ -5,12 +5,22 @@ import Context from "../context";
 export default function Settings() {
   const {token, setToken} = React.useContext(Context)
   const [saved, setSaved] = React.useState(false)
+  const [savedText, setSavedText] = React.useState('')
 
   function saveToken(event) {
     event.preventDefault();
     setToken(event.target.value)
 
     localStorage.setItem("dvmnToken", event.target.value)
+
+    if (event.target.value) {
+      setSavedText('Токен успешно сохранен')
+    } else {
+      setSavedText('Токен успешно удален')
+      localStorage.removeItem("dvmnCurrentLesson")
+      localStorage.removeItem("dvmnToken")
+      localStorage.removeItem("dvmnCurrentStepNumber")
+    }
 
     showSuccess(token, event.target.value)
   }
@@ -31,13 +41,13 @@ export default function Settings() {
         <hr/>
         {saved &&
         <div className="alert alert-success" role="alert">
-          Token успешно сохранен
+          {savedText}
         </div>}
 
         <form>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <span className="input-group-text" id="token">API Token</span>
+              <span className="input-group-text" id="token">Authorization: Token</span>
             </div>
               <input type="text" className="form-control" aria-label="Token" defaultValue={token}
                      aria-describedby="token" onBlur={(event) => saveToken(event)}/>
@@ -45,7 +55,6 @@ export default function Settings() {
         </form>
         <hr/>
         <p>Если Вы найдете ошибку - отпишитесь в Telegram: @neverdieone</p>
-
       </div>
   )
 }

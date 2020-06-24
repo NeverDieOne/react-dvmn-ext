@@ -10,15 +10,19 @@ export default function Settings() {
     event.preventDefault();
     setToken(event.target.value)
 
-    showSuccess()
+    localStorage.setItem("dvmnToken", event.target.value)
+
+    showSuccess(token, event.target.value)
   }
 
-  function showSuccess() {
-    setSaved(true);
+  function showSuccess(oldToken, newToken) {
+    if (!(oldToken === newToken)) {
+      setSaved(true);
 
-    setInterval(() => {
-      setSaved(false)
-    }, 5000)
+      setInterval(() => {
+        setSaved(false)
+      }, 5000)
+    }
   }
 
   return (

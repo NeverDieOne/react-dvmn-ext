@@ -12,7 +12,7 @@ import {
 
 function App(props) {
   const {history} = props
-  const [token, setToken] = React.useState('hello')
+  const [token, setToken] = React.useState(localStorage.getItem('dvmnToken') || undefined)
 
   return (
       <Context.Provider value={{setToken, token}}>

@@ -2,17 +2,24 @@ import React from "react";
 import StepItem from "./StepItem";
 
 function LessonDescription({lesson}) {
-  const [currentStepNumber, setCurrentStepNumber] = React.useState(1)
+  const [currentStepNumber, setCurrentStepNumber] = React.useState(
+      JSON.parse(localStorage.getItem("dvmnCurrentStepNumber")) || 1
+  )
   const [currentStep, setCurrentStep] = React.useState(
       lesson.steps[currentStepNumber - 1]
   )
 
   React.useEffect(() => {
     setCurrentStep(lesson.steps[currentStepNumber - 1])
+    localStorage.setItem("dvmnCurrentStepNumber", JSON.stringify(currentStepNumber))
   }, [currentStepNumber, lesson])
 
   React.useEffect(() => {
-    setCurrentStepNumber(1)
+    if (JSON.stringify(lesson) !== localStorage.getItem("dvmnCurrentLesson")) {
+      setCurrentStepNumber(1)
+    } else {
+      setCurrentStepNumber(JSON.parse(localStorage.getItem("dvmnCurrentStepNumber")) || 1)
+    }
   }, [lesson])
 
   function next() {

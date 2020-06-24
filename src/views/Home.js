@@ -7,7 +7,9 @@ import { Link } from "react-router-dom"
 
 function Home() {
   const [lessons, setLessons] = React.useState()
-  const [currentLesson, setCurrentLesson] = React.useState()
+  const [currentLesson, setCurrentLesson] = React.useState(
+      JSON.parse(localStorage.getItem("dvmnCurrentLesson"))
+  )
   const [loading, setLoading] = React.useState(true)
   const {token} = React.useContext(Context)
 
@@ -20,6 +22,10 @@ function Home() {
         })
         .catch(err => console.log(err))
   }, [])
+
+  React.useEffect(() => {
+    localStorage.setItem("dvmnCurrentLesson", JSON.stringify(currentLesson))
+  }, [currentLesson])
 
   return (
       <Context.Provider value={{setCurrentLesson}}>
